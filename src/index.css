@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-ink bg-cream antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+.skip-link {
+  @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded-md border border-ink bg-white px-4 py-3 text-sm font-semibold text-ink transition-transform focus:translate-y-0;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs font-medium uppercase tracking-[0.25em] text-brick-600;
+  }
+
+  .panel {
+    @apply rounded-2xl border border-stone-200 bg-white shadow-card;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-brick-600 px-6 py-3.5 font-display text-sm font-semibold text-white shadow-card transition-colors duration-150 hover:bg-brick-700 active:scale-[0.98];
+  }
+
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-ink px-6 py-3.5 font-display text-sm font-semibold text-white shadow-card transition-colors duration-150 hover:bg-stone-800 active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-stone-300 bg-transparent px-6 py-3.5 font-display text-sm font-semibold text-ink transition-colors duration-150 hover:border-brick-600 hover:text-brick-600 active:scale-[0.98];
+  }
+
+  /* The "shop badge" — a triangle-clipped tag echoing the real sign's own
+     cut-corner triangle shape, used for the Est. 1990 mark and stat chips
+     instead of a generic rounded pill. */
+  .badge-triangle {
+    @apply relative inline-flex items-center gap-2 border-2 border-brick-600 bg-white px-4 py-2 font-mono text-xs font-semibold uppercase tracking-widest text-brick-700;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  .badge-triangle-dark {
+    @apply relative inline-flex items-center gap-2 border-2 border-cream/40 bg-ink px-4 py-2 font-mono text-xs font-semibold uppercase tracking-widest text-cream;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  /* Sign-plate: a card styled like a bolted metal shop sign panel. */
+  .sign-plate {
+    @apply relative rounded-lg border-4 border-brick-600 bg-white p-6 shadow-badge;
+  }
+
+  .sign-plate::before,
+  .sign-plate::after {
+    content: '';
+    @apply absolute h-2.5 w-2.5 rounded-full bg-stone-300 shadow-inner;
+    top: 10px;
+  }
+
+  .sign-plate::before {
+    left: 10px;
+  }
+
+  .sign-plate::after {
+    right: 10px;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #6c1e2b;
+  outline-offset: 2px;
+}
